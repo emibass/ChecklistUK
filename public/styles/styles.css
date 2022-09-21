@@ -1,7 +1,10 @@
-
+body{
+  background-color: #489c54;
+}
   .holder {
-    background: #f0efe9;
     min-height: 100vh;
+    background: rgb(72,156,84);
+    background: linear-gradient(0deg, rgba(72,156,84,1) 0%, rgba(223,227,195,1) 100%);
   }
   
   .rounded {
@@ -28,9 +31,10 @@
 
   .footer-wrapper {
     height: 2em;
-    background-color:#f0efe9;
     text-align: center;
     justify-content: center;
+    background-color: #489c54;
+    color: white;
   }
 
 .card {
