@@ -2,8 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
-const router = require("express").Router;
-const {getItems, getItemByID, addOrUpdateItem, deleteItem} = require("./database");
+const {getItems, addOrUpdateItem, deleteItem} = require("./database");
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -48,10 +47,4 @@ try {
 }
 });
 
-app.use("/", router);
-
-const port = process.env.PORT || 3000;
-
-app.listen(port, function(){
-    console.log("Server running");
-});
+app.listen(process.env.PORT || 3000);
