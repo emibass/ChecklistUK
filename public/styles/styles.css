@@ -1,0 +1,54 @@
+
+  .holder {
+    background: #f0efe9;
+    min-height: 100vh;
+  }
+  
+  .rounded {
+    border-radius: 1rem !important;
+  }
+  
+  .text-gray {
+    color: #aaa;
+  }
+  
+  /* input:checked + label {
+    text-decoration: line-through; 
+    color: #adb5bd;
+  }
+   */
+  label {
+    cursor: pointer;
+   
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+  .footer-wrapper {
+    height: 2em;
+    background-color:#f0efe9;
+    text-align: center;
+    justify-content: center;
+  }
+
+.card {
+    margin-bottom: 10px;
+  }
+
+.delete {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+  color:cornflowerblue;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.form-check {
+  margin-bottom: 0px;
+}

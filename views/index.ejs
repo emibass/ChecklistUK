@@ -1,0 +1,52 @@
+<%- include('partials/header'); -%>
+<main>
+<div class="holder d-flex">
+    
+    <div class="container">
+        <header class="text-center mb-5">
+            <h1 class="display-4">Fuksy wracaja do Notts!</h1>
+            <p class="fst-italic text-muted">Pomozecie??</p>
+            <p class="fst-italic text-muted">Below is a list of things which we'll need at the beginning, before our stuff arrives from NZ.</p>
+            <p class="fst-italic text-muted">Please tick off the things that we can borrow.</p>
+        </header>
+
+        
+        <div class="row">
+            <div class="col-lg-5 mx-auto">
+
+                <!-- CHECKBOX LIST -->
+                <div class="card rounded border-0 shadow-sm position-relative">
+                    <div class="card-body p-5">
+                        <div class="d-flex mb-4 align-items-center pb-4 border-bottom"><i class="fa-solid fa-plane-arrival"></i>
+                            <div class="ms-3">
+                                <h4 class="text-uppercase fw-weight-bold mb-0">Nottingham arrival</h4>
+                                <p class="text-gray fst-italic mb-0">03 November 2022</p>
+                            </div>
+                        </div>
+                     
+                        <form action="/" method="POST">
+                        <div class="input-group mb-3">
+                            <input type="text" name="item" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off">
+                            <button class="btn btn-outline-secondary" type="submit" id="add">Add</button>
+                          </div>
+                        </form>  
+                       
+                          <% newListItems.forEach(function(item){ %>
+                            <form action ="/delete" method="POST">
+                            <div class="form-check mb-3 d-flex justify-content-between ">
+                                <input class="form-check-input" id="flexCheck1" type="checkbox">
+                                <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
+                               <button class="delete" type="submit" name="delete" value="<%=item.id%>" onChange="this.form.submit()"><i class="form-check fa-solid fa-xmark"></i></button>
+                            </div>
+                        </form>
+                    
+             <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include('partials/footer'); -%>
