@@ -42,7 +42,7 @@ const getItemByID = async (id) => {
     const params = {
         TableName: TABLE_NAME,
         Key: {
-            id
+             id
         }
     };
     return await dynamoClient.delete(params).promise();

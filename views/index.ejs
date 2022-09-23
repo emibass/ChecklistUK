@@ -26,17 +26,19 @@
                      
                         <form action="/" method="POST">
                         <div class="input-group mb-3">
-                            <input type="text" name="item" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off">
+                            <input type="text" name="item" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off" required>
                             <button class="btn btn-outline-secondary" type="submit" id="add">Add</button>
                           </div>
                         </form>  
                        
                           <% newListItems.forEach(function(item){ %>
-                            <form action ="/delete" method="POST">
+                       
                             <div class="form-check mb-3 d-flex justify-content-between ">
-                                <input class="form-check-input" id="flexCheck1" type="checkbox">
+                                <form action="/" method="PUT">
+                                <input class="input" type="text" name="input" value="<%=item.input%>" onchange="this.form.submit()"></form>
+                                <form action ="/delete" method="POST">
                                 <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
-                               <button class="delete" type="submit" name="delete" value="<%=item.id%>" onChange="this.form.submit()"><i class="form-check fa-solid fa-xmark"></i></button>
+                               <button class="delete" type="submit" name="delete" value="<%=item.id%>"><i class="form-check fa-solid fa-xmark"></i></button>
                             </div>
                         </form>
                     

@@ -24,7 +24,7 @@ try {
 app.post("/", async(req, res)=> {
     const newListItem ={
         name: req.body.item,
-        id: Date.now()
+        id: Math. floor(Math. random() * 1000)
     }
 try {
     await  addOrUpdateItem(newListItem);
@@ -35,9 +35,24 @@ try {
 }
 });
 
+app.set("/", async (req, res) =>{
+    const listItem ={
+        name: req.body.item,
+        id: new Number(req.body.delete),
+        input: req.body.input
+    }
+
+try {
+    await addOrUpdateItem(listItem);
+    res.redirect("/");
+} catch (err){
+    console.log (err);
+}
+})
+
 app.post("/delete", async (req, res) => {
 const checkedItemId = new Number(req.body.delete);
-
+console.log(checkedItemId);
 try {
     await deleteItem(checkedItemId);
     res.redirect("/");
