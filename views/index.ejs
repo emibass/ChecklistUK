@@ -32,11 +32,11 @@
                         </form>  
                        
                           <% newListItems.forEach(function(item){ %>
-                       
+                            <form action ="/delete" method="POST">
                             <div class="form-check mb-3 d-flex justify-content-between ">
-                                <form action="/" method="PUT">
-                                <input class="input" type="text" name="input" value="<%=item.input%>" onchange="this.form.submit()"></form>
-                                <form action ="/delete" method="POST">
+                         
+                                <input class="input" type="text" name="input" value="<%=item.input%>">
+                  
                                 <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
                                <button class="delete" type="submit" name="delete" value="<%=item.id%>"><i class="form-check fa-solid fa-xmark"></i></button>
                             </div>
