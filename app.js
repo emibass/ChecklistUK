@@ -35,20 +35,20 @@ try {
 }
 });
 
-app.set("/", async (req, res) =>{
-    const listItem ={
-        name: req.body.item,
-        id: new Number(req.body.delete),
-        input: req.body.input
-    }
+// app.set("/", async (req, res) =>{
+//     const listItem ={
+//         name: req.body.item,
+//         id: new Number(req.body.delete),
+//         input: req.body.input
+//     }
 
-try {
-    await addOrUpdateItem(listItem);
-    res.redirect("/");
-} catch (err){
-    console.log (err);
-}
-})
+// try {
+//     await addOrUpdateItem(listItem);
+//     res.redirect("/");
+// } catch (err){
+//     console.log (err);
+// }
+// })
 
 app.post("/delete", async (req, res) => {
 const checkedItemId = new Number(req.body.delete);
