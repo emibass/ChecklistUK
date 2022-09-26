@@ -1,5 +1,6 @@
 require('dotenv').config();
 var AWS = require('aws-sdk');
+const { DocumentClient } = require('aws-sdk/clients/dynamodb');
 
 AWS.config.update({
     region: process.env.aws_default_region,
@@ -14,18 +15,44 @@ const getItems = async () => {
     const params = {
         TableName: TABLE_NAME,
     };
- return await dynamoClient.scan(params).promise();
+const items = await dynamoClient.scan(params).promise();
+return items;
 };
 
 
-const addOrUpdateItem = async (item) => {
+const addItem = async (listItem) => {
+    if (!listItem.id){
+        throw Error("no id on listItem")
+    }
+
     const params = {
         TableName: TABLE_NAME,
-        Item: item
+        Item: listItem
     }
-    return await dynamoClient.put(params).promise();
+   const res =  await dynamoClient.put(params).promise();
+
+   if (!res) {
+    throw Error (`There was an error inserting ID of ${listItem.id} `);
+   }
+
+   return listItem;
 };
 
+
+const updateItem = async (id) => {
+
+    const params = {
+        TableName: TABLE_NAME,
+        Key: {
+            id
+        },
+        UpdateExpression: `set ${input} = :inputValue`
+
+    }
+
+   const updatedItem = await dynamoClient.update(params).promise();
+   return updatedItem;
+}
 
 const getItemByID = async (id) => {
     const params = {
@@ -53,6 +80,7 @@ const getItemByID = async (id) => {
     dynamoClient,
     getItems,
     getItemByID,
-    addOrUpdateItem,
-    deleteItem
+    addItem,
+    deleteItem,
+    updateItem
  };

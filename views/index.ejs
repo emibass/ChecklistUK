@@ -7,7 +7,7 @@
             <h1 class="display-4">Fuksy wracaja do Notts!</h1>
             <p class="fst-italic ">Pomozecie??</p>
             <p class="fst-italic ">Below is a list of things which we'll need at the beginning, before our stuff arrives from NZ.</p>
-            <p class="fst-italic ">Please tick off the things that we can borrow.</p>
+            <p class="fst-italic ">If there's anything that we could borrow from you, please input a comment next to the thing.</p>
         </header>
 
         
@@ -26,7 +26,7 @@
                      
                         <form action="/" method="POST">
                         <div class="input-group mb-3">
-                            <input type="text" name="item" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off" required>
+                            <input type="text" name="listItem" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off" required>
                             <button class="btn btn-outline-secondary" type="submit" id="add">Add</button>
                           </div>
                         </form>  
@@ -35,8 +35,7 @@
                             <form action ="/delete" method="POST">
                             <div class="form-check mb-3 d-flex justify-content-between ">
                          
-                                <input class="input" type="text" name="input" value="<%=item.input%>">
-                  
+                                <input class="input" type="checkbox" name="checkbox" >
                                 <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
                                <button class="delete" type="submit" name="delete" value="<%=item.id%>"><i class="form-check fa-solid fa-xmark"></i></button>
                             </div>
