@@ -9,7 +9,7 @@ AWS.config.update({
 });
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
-const TABLE_NAME = "ChecklistUK";
+const TABLE_NAME = "Checklist_test";
 
 const getItems = async () => {
     const params = {
@@ -45,9 +45,7 @@ const updateItem = async (id) => {
         TableName: TABLE_NAME,
         Key: {
             id
-        },
-        UpdateExpression: `set ${input} = :inputValue`
-
+        }
     }
 
    const updatedItem = await dynamoClient.update(params).promise();

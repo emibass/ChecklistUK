@@ -3,6 +3,7 @@ const express = require("express");
 const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const {getItems, addItem, deleteItem, updateItem} = require("./database");
+const e = require('express');
 
 
 const app = express();
@@ -22,23 +23,38 @@ try {
  }
 });
 
-app.post("/add", async(req, res)=> {
+app.post("/submit", async(req, res)=> {
+
+ 
+if (req.body.listItem.length > 0) {
     const newListItem ={
         name: req.body.listItem,
+        selected: 0,
         id: Math. floor(Math. random() * 1000)
     }
-try {
-    await  addItem(newListItem);
-    res.redirect("/");
 
-} catch (err){
-   console.log(err);
+    try {
+        await  addItem(newListItem);
+        // res.redirect("/");
+
+    } catch (err){
+        console.log(err);
+    }
 }
+
+const checkedItem = req.body.check;
+console.log(checkedItem);
+
+ res.redirect("/");
+
 });
 
 
-app.post("/delete", async (req, res) => {
-const checkedItemId = new Number(req.body.delete);
+app.get("/delete/:id", async (req, res) => {
+
+
+const checkedItemId = new Number(req.params.id);
+    
 try {
     await deleteItem(checkedItemId);
     res.redirect("/");
@@ -46,6 +62,8 @@ try {
 } catch (err){
     console.log(err);
 }
+
+
 });
 
 
