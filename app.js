@@ -22,7 +22,7 @@ try {
  }
 });
 
-app.post("/", async(req, res)=> {
+app.post("/add", async(req, res)=> {
     const newListItem ={
         name: req.body.listItem,
         id: Math. floor(Math. random() * 1000)

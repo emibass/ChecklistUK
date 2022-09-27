@@ -24,7 +24,7 @@
                             </div>
                         </div>
                      
-                        <form action="/" method="POST">
+                        <form action="/add" method="POST">
                         <div class="input-group mb-3">
                             <input type="text" name="listItem" class="form-control" placeholder="Add new list item" aria-label="new list item" aria-describedby="button-addon2" autocomplete="off" required>
                             <button class="btn btn-outline-secondary" type="submit" id="add">Add</button>
@@ -34,7 +34,6 @@
                           <% newListItems.forEach(function(item){ %>
                             <form action ="/delete" method="POST">
                             <div class="form-check mb-3 d-flex justify-content-between ">
-                         
                                 <input class="input" type="checkbox" name="checkbox" >
                                 <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
                                <button class="delete" type="submit" name="delete" value="<%=item.id%>"><i class="form-check fa-solid fa-xmark"></i></button>
