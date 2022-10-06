@@ -2,6 +2,7 @@ require('dotenv').config();
 var AWS = require('aws-sdk');
 const { DocumentClient } = require('aws-sdk/clients/dynamodb');
 
+
 AWS.config.update({
     region: process.env.aws_default_region,
     accessKeyId: process.env.aws_access_key_id,
@@ -39,21 +40,45 @@ const addItem = async (listItem) => {
 };
 
 
-const updateItem = async (id) => {
+const updateItemTo1 = async (id) => {
 
-    const params = {
-        TableName: TABLE_NAME,
-        Key: {
-            id
-        }
+   const updatedItem = await dynamoClient.update(
+    {
+    TableName: TABLE_NAME,
+    Key: { id },
+    UpdateExpression: "SET #selected = :selected",
+    ExpressionAttributeNames: {
+      "#selected": "selected",
+    },
+    ExpressionAttributeValues: {
+      ":selected": 1,
     }
-
-   const updatedItem = await dynamoClient.update(params).promise();
+    }
+  ).promise();
    return updatedItem;
-}
+};
+
+const updateItemTo0 = async (id) => {
+
+  const updatedItem = await dynamoClient.update(
+   {
+   TableName: TABLE_NAME,
+   Key: { id },
+   UpdateExpression: "SET #selected = :selected",
+   ExpressionAttributeNames: {
+     "#selected": "selected",
+   },
+   ExpressionAttributeValues: {
+     ":selected": 0,
+   }
+   }
+ ).promise();
+  return updatedItem;
+};
 
 const getItemByID = async (id) => {
     const params = {
+      
         TableName: TABLE_NAME,
         Key: {
             id
@@ -73,6 +98,29 @@ const getItemByID = async (id) => {
     return await dynamoClient.delete(params).promise();
  };
 
+//  const transaction = async (id) => {
+//     await dynamoClient.transactWrite({
+//         TransactItems: [
+//             {
+//                 Update:{
+                    
+//                     TableName: TABLE_NAME,
+//                     Key:{
+//                         id
+//                     },              
+//                     UpdateExpression: "SET selected = :value",
+//                     ExpressionAttributeValues: {
+//                         ":value" : 0
+//                     }   
+//                 }
+//             }
+//         ]
+//     }).promise();
+//  };
+
+
+
+
 
  module.exports = {
     dynamoClient,
@@ -80,5 +128,6 @@ const getItemByID = async (id) => {
     getItemByID,
     addItem,
     deleteItem,
-    updateItem
+    updateItemTo1,
+    updateItemTo0
  };
