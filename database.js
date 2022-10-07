@@ -10,7 +10,7 @@ AWS.config.update({
 });
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
-const TABLE_NAME = "Checklist_test";
+const TABLE_NAME = "ChecklistUK";
 
 const getItems = async () => {
     const params = {

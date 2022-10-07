@@ -30,22 +30,36 @@
                             <button class="btn btn-outline-secondary" type="submit" id="add">Add</button>
                           </div>
                      
-                       
+                        <div id="toborrow" >
                           <% newListItems.forEach(function(item){ %>
-                    
-                            <div class="form-check from-switch mb-3 d-flex justify-content-between ">
+                            <% if(item.selected == 0) { %>
+                            <div class="form-check  mb-3 d-flex justify-content-between" >
                                 <a href="/update/<%=item.id%>"   value="<%=item.id%>" <%=item.selected  == 1 ? 'checked' :''%> <i class="fa-regular fa-thumbs-up"></i></a>
                                 <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
                                 <a href="/delete/<%=item.id%>" class="delete"  name="delete" value="<%=item.id%>" onclick="if (confirm('Are you sure?')) return true; return false"><i class="form-check fa-solid fa-xmark"></i></a>
                             </div>
-                  
-             <% }) %>
-                     <div class="d-flex mb-4 align-items-center pb-4 border-bottom">
-                     <i class="fa-solid fa-person-circle-check"></i>
-                         <div class="ms-3">
-                         <h5 class="text-uppercase fw-weight-bold mb-0">Approved by Caldwell - Wojnarski</h5>
+                            <% } %>
+                            <% }) %>
                         </div>
+                  
+                     <div class=" mb-3 d-flex justify-content-between">
+                        
+                        <i class="fa-solid fa-arrows-down-to-line"></i>
+                        <h4 class="text-uppercase fw-weight-bold mb-0">Approved by Cauldwell - Wojnarski</h4>
+                        <i class="fa-solid fa-arrows-down-to-line"></i>
                     </div>
+                    <div id="oktoborrow">
+                        <% newListItems.forEach(function(item){ %>
+                            <% if(item.selected == 1) { %>
+                        <div class="form-check mb-3 d-flex justify-content-between">
+                      
+                               <a href="/update/<%=item.id%>"   value="<%=item.id%>" <%=item.selected  == 1 ? 'checked' :''%> <i class="fa-solid fa-thumbs-up"></i></a>
+                                <label class="form-check-label" for="flexCheck1"><span class="fst-italic p-1"><%=item.name%></span></label>
+                                <a href="/delete/<%=item.id%>" class="delete"  name="delete" value="<%=item.id%>" onclick="if (confirm('Are you sure?')) return true; return false"><i class="form-check fa-solid fa-xmark"></i></a>
+                            </div>
+                              <% } %>
+                              <% }) %>
+                         
                     </div>
                 </form>
                 </div>

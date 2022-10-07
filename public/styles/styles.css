@@ -15,14 +15,11 @@ body{
     color: #aaa;
   }
   
-  /* input:checked + label {
-    text-decoration: line-through; 
-    color: #adb5bd;
-  }
-   */
+h4 {
+  font-size: 1em;
+}
   label {
-    cursor: pointer;
-   
+    cursor: pointer; 
   }
   
   a {
@@ -46,7 +43,7 @@ body{
   border: none;
   margin: 0;
   cursor: pointer;
-  color:cornflowerblue;
+  color:rgb(72,156,84);
 }
 
 .text-left {
@@ -57,12 +54,25 @@ body{
   margin-bottom: 0px;
 }
 
+#toborrow {
+  padding-bottom: 1em;
+}
+
+#oktoborrow {
+  padding-top: 1em;
+}
+
 .input {
   width: 2em;
   height: 2em;
   border: 1px solid rgb(193, 190, 190);
   border-radius: 10%;
-  color:cornflowerblue;
+  color:rgb(72,156,84);
+}
+
+.fa-thumbs-up {
+  color: rgb(72,156,84);
+  font-size: 1.5em;
 }
 
 .form-check {
